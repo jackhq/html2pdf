@@ -2,7 +2,7 @@
 require 'rubygems'
 require 'hugo'
 
-config = YAML.load_file(File.join(File.dirname(__FILE__),'htmldocs.yml'))
+config = YAML.load_file(File.join(File.dirname(__FILE__),'htmldoc.yml'))
 
 
 Hugo do 
@@ -15,7 +15,7 @@ Hugo do
     #   
     #balancer
     
-    app "htmldoc" do
+    app "html2pdf" do
       # ec2 private key
       key_name "ec2-keypair"      
       key_path "~/.ec2"
@@ -37,15 +37,15 @@ Hugo do
       add_recipe 'apache2::mod_rewrite'
       add_recipe 'hugo_deploy', :hugo => {
                 :app => {
-                  :name => 'htmldoc',
+                  :name => 'html2pdf',
                   :branch => 'HEAD',
                   :migrate => false,
-                  :web => { :port => '80', :server_name => 'htmldoc.jackfile.com'} 
+                  :web => { :port => '80', :server_name => 'html2pdf.jackfile.com'} 
                 }  
               }
       # New recipe to use the new bundler
       ['install', 'pack', 'lock'].each do |cmd|
-        add_recipe 'bundler::' + cmd, :bundler => { :app => 'pdf2swf' }
+        add_recipe 'bundler::' + cmd, :bundler => { :app => 'html2pdf' }
       end
       
       instance "i-768f9d1e"

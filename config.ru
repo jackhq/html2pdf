@@ -8,10 +8,12 @@ rescue LoadError
   Bundler.setup
 end
 
+require 'sinatra'
+
 set :environment, :production
 disable :run
 
 
-require 'htmldocs'
+require 'html2pdf'
 
 run Sinatra::Application

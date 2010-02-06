@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'base64'
+require 'builder'
 
 ####################################################
 #

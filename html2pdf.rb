@@ -1,6 +1,4 @@
-require 'rubygems'
 require 'sinatra'
-require 'activerecord'
 require 'base64'
 
 ####################################################

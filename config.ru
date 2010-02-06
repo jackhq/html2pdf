@@ -8,8 +8,6 @@ rescue LoadError
   Bundler.setup
 end
 
-require 'sinatra'
-
 set :environment, :production
 disable :run
 
